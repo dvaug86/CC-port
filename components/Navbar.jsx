@@ -12,7 +12,7 @@ const Navbar = () => {
     const [nav, setNav] =useState(false);
     
 const handleNav = () => {
-    setNav(true) 
+    setNav(!nav) 
 }
 
   return (
@@ -48,16 +48,26 @@ const handleNav = () => {
 
           {/* This for small screen/cellphone menu */}
           {/* md: hidden will hide this icon only when screen is bigger than medium */}
-          <div onClick={handleNav} className="md:hidden">
+          <div onClick={handleNav} className="md:hidden cursor-pointer">
             <AiOutlineMenu size={25} />
           </div>
         </div>
       </div>
-
+      {/* overlay */}
+      <div
+        className={
+          nav ? 'md:hidden fixed left-0 top-0 w-full h-screen bg-black/70' : ''
+        }
+      >
       {/* small menu items */}
       {/* header for small menu */}
-      <div className={nav ? 'fixed left-0 top-0 w-full h-screen bg-black/70' : '' }>
-        <div className="fixed left-0 top-0 w-[75%] sm:w-[60%] md:-[45%] h-screen bg-[#ecf0f3] p-10 ease-in duration-500">
+      <div
+          className={
+            nav
+              ? ' fixed left-0 top-0 w-[75%] sm:w-[60%] md:w-[45%] h-screen bg-[#ecf0f3] p-10 ease-in duration-500'
+              : 'fixed left-[-100%] top-0 p-10 ease-in duration-500'
+          }
+        >
           <div>
             <div className="flex  w-full items-center justify-between">
               <Image src={NavLogo} alt="/" width="87" height="35" />
@@ -89,7 +99,7 @@ const handleNav = () => {
                 </Link>
             </ul>
 
-            {/* footer items */}
+            {/* side menu footer items */}
             <div className="pt-40">
                 <p className="uppercase tracking-widest text-[#5651e5]">Let's Connect</p>
                 <div className="flex items-center justify-between my-4 w-full sm:w-[80%]">
