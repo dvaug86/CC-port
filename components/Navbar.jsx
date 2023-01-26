@@ -4,12 +4,31 @@ import React, { useState, useEffect } from "react";
 import { AiOutlineClose, AiOutlineMail, AiOutlineMenu } from "react-icons/ai";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { BsFillPersonLinesFill } from "react-icons/bs";
+import { useRouter } from "next/router";
 
 import NavLogo from "../public/assets/navLogo.png";
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
   const [shadow, setShadow] = useState(false);
+  const [navBg, setNavBg] = useState("#ecf0f3");
+  const [linkColor, setLinkColor] = useState("#1f2937");
+  const router = useRouter();
+
+  useEffect(() => {
+    if (
+      router.asPath === "/property" ||
+      router.asPath === "/crypto" ||
+      router.asPath === "/netflix" ||
+      router.asPath === "/twitch"
+    ) {
+      setNavBg("transparent");
+      setLinkColor("#ecf0f3");
+    } else {
+      setNavBg("#ecf0f3");
+      setLinkColor("#1f2937");
+    }
+  }, [router]);
 
   const handleNav = () => {
     setNav(!nav);
@@ -28,6 +47,7 @@ const Navbar = () => {
 
   return (
     <div
+    style={{backgroundColor:`${navBg}`}}
       className={
         shadow
           ? "fixed w-full h-20 shadow-xl z-[100]"
@@ -41,7 +61,7 @@ const Navbar = () => {
         <div className="">
           {/* full screen navbar menu */}
           {/* This is hidden when screen is smaller than "medium", anything larger itll show as flex row and b.c of earlier div it is justified between  */}
-          <ul className="hidden md:flex">
+          <ul style={{color:`${linkColor}`}} className="hidden md:flex">
             <Link href="/#home" scroll={false}>
               <li className=" ml-10 text-sm uppercase hover:border-b">Home</li>
             </Link>
@@ -107,19 +127,29 @@ const Navbar = () => {
             {/* navbar links */}
             <ul className="uppercase">
               <Link href="/#home" scroll={false}>
-                <li  onClick={()=> setNav(false)} className="py-4 text-sm">Home</li>
+                <li onClick={() => setNav(false)} className="py-4 text-sm">
+                  Home
+                </li>
               </Link>
               <Link href="/#about" scroll={false}>
-                <li  onClick={()=> setNav(false)} className="py-4 text-sm">About</li>
+                <li onClick={() => setNav(false)} className="py-4 text-sm">
+                  About
+                </li>
               </Link>
               <Link href="/#skills" scroll={false}>
-                <li  onClick={()=> setNav(false)} className="py-4 text-sm">Skills</li>
+                <li onClick={() => setNav(false)} className="py-4 text-sm">
+                  Skills
+                </li>
               </Link>
               <Link href="/#projects" scroll={false}>
-                <li  onClick={()=> setNav(false)} className="py-4 text-sm">Projects</li>
+                <li onClick={() => setNav(false)} className="py-4 text-sm">
+                  Projects
+                </li>
               </Link>
               <Link href="/#contact" scroll={false}>
-                <li  onClick={()=> setNav(false)} className="py-4 text-sm">Contact</li>
+                <li onClick={() => setNav(false)} className="py-4 text-sm">
+                  Contact
+                </li>
               </Link>
             </ul>
 
