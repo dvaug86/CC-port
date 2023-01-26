@@ -26,7 +26,7 @@ const Projects = () => {
             projectUrl="/crypto"
           />
           <ProjectItem
-            title="Netflix"
+            title="Netflix App"
             backgroundImg={netflixImg}
             projectUrl="/netflix"
           />

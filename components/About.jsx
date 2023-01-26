@@ -7,15 +7,15 @@ const About = () => {
     <div id="about" className="w-full md:h-screen p-2 flex items-center py-16">
       <div className="max-w-[1240px] m-auto md:grid grid-cols-3 gap-9">
         <div className="col-span-2">
-          <p>About</p>
-          <h2>Who I Am</h2>
-          <p>
+          <p className='uppercase text-xl tracking-widest text-[#5651e5]'>About</p>
+          <h2 className="'py-4'">Who I Am</h2>
+          <p className='py-2 text-gray-600'>
             Right here is where my future bio would go with a brief history of
             me. I was civil/structural engineer as well as carpenter decided to
             take my wanning passion for the construction world and start
             pursuing my love of tech and code.
           </p>
-          <p>
+          <p className='py-2 text-gray-600'>
             I decided then that I wanted take my love of designing buildings and
             merge that with my love of code and persue a path in coding.
           </p>
